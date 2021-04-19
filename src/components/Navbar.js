@@ -36,7 +36,6 @@ const Wrapper = styled.nav`
   align-items: center; 
   justify-content: space-between;
   padding: 1.5rem 2rem;
-  margin-bottom: 4rem;
   background: var(--clr-white);
   .navbar__left {
     display: flex;

@@ -1,33 +1,56 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import styled from 'styled-components';
-import loginImg from '../images/login-img.svg';
+import github from "../images/github-login.jpg"; 
+
+
 const Login = () => { 
 
   const { loginWithRedirect } = useAuth0(); 
 
-  return <Wrapper>
+  return <Wrapper> 
+      <img src={github} alt="login cover" className="login__left" /> 
       <div className="container">
-        <img src={loginImg} alt="github user" /> 
-        <h1>github user</h1> 
+          <h1>Welcome to Github User</h1>
         <button className="btn" onClick={loginWithRedirect}>login / Sign up</button>
       </div>
   </Wrapper>;
 };
 const Wrapper = styled.section`
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  .container {
-    width: 90vw;
-    max-width: 600px;
-    text-align: center;
+  display: flex; 
+
+  
+  .login__left {
+    width: 50%; 
+    object-fit: cover;
+    height: 100vh;
   }
-  img {
-    margin-bottom: 2rem;
+  
+  .container { 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+    margin: 0 auto; 
+    
+    h1 {
+      text-align: center; 
+      margin-bottom: 5rem;
+    }
   }
-  h1 {
-    margin-bottom: 1.5rem;
+  @media screen and (max-width: 800px) {
+    .login__left {
+      display: none; 
+    }
+
+    .container {
+        margin: 12rem auto; 
+
+        h1 {
+          font-size: 2rem;
+        }
+    }
   }
+
 `;
 export default Login;
