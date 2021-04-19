@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useAuth0 } from '@auth0/auth0-react';
+import { useAuth0 } from '@auth0/auth0-react'; 
+import logo from "../images/github-logo.png"
 
 const Navbar = () => {
   const { isAuthenticated, loginWithRedirect, logout, user, isLoading } = useAuth0(); 
@@ -9,39 +10,65 @@ const Navbar = () => {
   const isUser = isAuthenticated && user;
 
   return <Wrapper>
-    { isUser && user.picture && <img src={user.picture} alt={user.name} />}
+    <div className="navbar__left">
+        <img src={logo} alt="Github logo"/> 
+    </div>
+
     { isUser && user.name && <h4>Welcome, <strong>{user.name.toUpperCase()}</strong></h4>}
 
+    <div className="navbar__right">
+    { isUser && user.picture && <img src={user.picture} alt={user.name} />}
+
     {isUser ? 
-      <button onClick={() => {logout({ returnTo: window.location.origin})}}>logout</button>
+      <button onClick={() => {logout({ returnTo: window.location.origin})}}>logout / Sign out</button>
       : 
     
       <button onClick={loginWithRedirect}>Login</button>
     }
+    </div>
 
 
   </Wrapper>;
 };
 
 const Wrapper = styled.nav`
-  padding: 1.5rem;
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
   margin-bottom: 4rem;
   background: var(--clr-white);
-  text-align: center;
-  display: grid;
-  grid-template-columns: auto auto 100px;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-  h4 {
-    margin-bottom: 0;
-    font-weight: 400;
+  .navbar__left {
+    display: flex;
+
+    img {
+      width: 10rem !important;  
+      height: 4rem !important; 
+      object-fit: contain !important;
+      border-radius: 0 !important;
+    }
+  }
+
+  .navbar__right {
+    display: flex; 
+    align-items: center;
   }
   img {
-    width: 35px !important;
+    width: 35px;
     height: 35px;
     border-radius: 50%;
     object-fit: cover;
+    margin-right: 1rem;
+  }
+  h4 {
+    margin-bottom: 0;
+    font-size: 1.4rem;
+    font-weight: 400;
+    text-align: center;
+
+    @media (max-width: 768) {
+      font-size: 1.2rem;
+    }
   }
   button {
     background: transparent;

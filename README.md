@@ -109,7 +109,7 @@ In order for routing to work on netlify, redirects was added to the public folde
 package.json
 
 ```js
-"build": "CI= react-scripts build",
+ 
 ```
 
 [create-react-app Warning Fix Blog Post](https://community.netlify.com/t/how-to-fix-build-failures-with-create-react-app-in-production/17752)

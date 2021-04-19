@@ -47,15 +47,6 @@ const GithubProvider = ({ children }) => {
                     } 
                 }).catch(error => console.log(error)) 
 
-                // // repos 
-                // axios(`${rootUrl}/users/${login}/repos?per_page=100`).then((response) => {
-                //     setRepos(response.data); 
-                // }) 
-                // // Followers 
-                // axios(`${followers_url}?per_page=100`).then((response) => {
-                //     setFollowers(response.data); 
-                // }) 
-
         } else { 
             toggleError(true, "there is no user with that username ")
         }
