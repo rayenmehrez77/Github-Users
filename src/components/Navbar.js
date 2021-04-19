@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useAuth0 } from '@auth0/auth0-react'; 
-import logo from "../images/github-logo.png"
+import logo from "../images/github-logo.png"; 
+import Typewriter from 'react-simple-typewriter'; 
+import 'react-simple-typewriter/dist/index.css' ;
 
 const Navbar = () => {
   const { isAuthenticated, loginWithRedirect, logout, user, isLoading } = useAuth0(); 
@@ -14,7 +16,18 @@ const Navbar = () => {
         <img src={logo} alt="Github logo"/> 
     </div>
 
-    { isUser && user.name && <h4>Welcome, <strong>{user.name.toUpperCase()}</strong></h4>}
+    { isUser && user.name && <h4>Welcome, <strong>
+          <Typewriter 
+            loop
+            cursor
+            cursorStyle='_'
+            typeSpeed={100}
+            deleteSpeed={80}
+            delaySpeed={1010}
+            words={[user.name.toUpperCase()]}      
+        /> 
+      </strong>
+     </h4> }
 
     <div className="navbar__right">
     { isUser && user.picture && <img src={user.picture} alt={user.name} />}

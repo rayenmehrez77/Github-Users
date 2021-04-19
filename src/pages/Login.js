@@ -2,6 +2,8 @@ import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import styled from 'styled-components';
 import github from "../images/github-login.jpg"; 
+import Typewriter from 'react-simple-typewriter'
+import 'react-simple-typewriter/dist/index.css'
 
 
 const Login = () => { 
@@ -11,13 +13,31 @@ const Login = () => {
   return <Wrapper> 
       <img src={github} alt="login cover" className="login__left" /> 
       <div className="container">
-          <h1>Welcome to Github User</h1>
+      <h1>
+      Welcome to 
+      <Typewriter 
+          className="github"
+          loop
+          cursor
+          cursorStyle='_'
+          typeSpeed={100}
+          deleteSpeed={50}
+          delaySpeed={1000}
+          words={[' Github User']}
+      />
+      
+      </h1>
         <button className="btn" onClick={loginWithRedirect}>login / Sign up</button>
       </div>
   </Wrapper>;
 };
 const Wrapper = styled.section`
   display: flex; 
+
+  .github {
+    font-weight: 700; 
+    font-size: 1.2rem;
+  }
 
   
   .login__left {
@@ -35,7 +55,8 @@ const Wrapper = styled.section`
     
     h1 {
       text-align: center; 
-      margin-bottom: 5rem;
+      font-size: 1.7rem !important;
+      margin-bottom: 6rem;
     }
   }
   @media screen and (max-width: 800px) {

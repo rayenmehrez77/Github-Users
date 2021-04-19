@@ -8,22 +8,22 @@ const Dashboard = () => {
 
   if(isLoading) {
     return <main>
-        <Navbar /> 
-        <Banner /> 
-        <Search /> 
-        <Spinner className="spinner"/>
+            <Navbar /> 
+            <Banner /> 
+            <Search /> 
+            <Spinner className="spinner"/>
       </main>
     }
     
     
     return (
       <main>
-      <Navbar /> 
-      <Banner /> 
-      <Search /> 
-      <Info /> 
-      <User /> 
-      <Repos /> 
+        <Navbar /> 
+        <Banner /> 
+        <Search /> 
+        <Info /> 
+        <User /> 
+        <Repos /> 
     </main>
   );
 };
